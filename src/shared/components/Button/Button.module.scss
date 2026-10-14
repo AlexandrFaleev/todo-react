@@ -1,0 +1,27 @@
+@use "@styles" as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  height: $input-height;
+  border: $border;
+  border-radius: $border-radius;
+  border-color: $black;
+  background-color: $black;
+  color: $white;
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  &:active {
+    scale: 1.05;
+  }
+
+  &:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+}

@@ -1,0 +1,51 @@
+@use "@styles" as *;
+
+.field {
+  width: 100%;
+  position: relative;
+
+  &:has(.field__input:not(:placeholder-shown)) .field__label {
+    scale: 0.85;
+    color: $black;
+    translate: -1.75em -2em;
+  }
+
+  &:has(.field__input[type="search"])::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: calc($input-padding-inline + 1px);
+    transform: translateY(-50%);
+    width: 25px;
+    height: 25px;
+    background: url("@assets/icons/icon-search.svg") center/cover no-repeat;
+  }
+
+  &:has(.field__input[type="search"]:not(:placeholder-shown))::after {
+    display: none;
+  }
+}
+
+.field__input {
+  width: 100%;
+  height: $input-height;
+  border: $border;
+  border-radius: $border-radius;
+  padding-inline: $input-padding-inline;
+  font-size: 16px;
+
+  &:focus {
+    outline: none;
+    background-color: $gray-200;
+  }
+}
+
+.field__label {
+  width: 200px;
+  position: absolute;
+  top: 50%;
+  left:  calc($input-padding-inline + 1px);
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: $gray-500;
+}

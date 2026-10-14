@@ -1,0 +1,164 @@
+@use "@styles" as *;
+
+.todo {
+  width: 404px;
+  min-height: 429px;
+
+  @include flex-col;
+
+  row-gap: 24px;
+  padding: 20px;
+  background-color: $white;
+  border-radius: $border-radius;
+}
+
+.todo__title {
+  font-size: 24px;
+  text-align: center;
+}
+
+.todo__form {
+  @include flex-row-center;
+
+  column-gap: 15px;
+}
+
+.todo__info {
+  @include flex-row-center;
+
+  justify-content: space-between;
+  column-gap: 15px;
+}
+
+.todo__info-total {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.todo__info-delete_all {
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    scale: 1.05;
+  }
+}
+
+.todo__list {
+  @include flex-col;
+
+  row-gap: 10px;
+}
+
+.todo__item {
+  @include flex-row-center;
+
+  column-gap: 10px;
+  padding-left: 10px;
+  border: $border;
+  border-radius: $border-radius;
+
+  transition-duration: $transition-duration;
+
+  &:has(&-checkbox:checked) &-title {
+    text-decoration: line-through;
+    opacity: .5;
+  }
+
+  &-checkbox {
+    appearance: none;
+    flex-shrink: 0;
+    width: 25px;
+    aspect-ratio: 1;
+    border: $border;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+
+    &:checked {
+      background-color: $black;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 15px;
+      height: 15px;
+      background: url("@assets/icons/icon-checkbox.svg") center/contain no-repeat;
+    }
+
+    &:not(:checked)::after {
+      display: none;
+    }
+  }
+
+  &-title {
+    width: 100%;
+  }
+
+  &-button {
+    flex-shrink: 0;
+    background-color: transparent;
+    width: 40px;
+    aspect-ratio: 1;
+    border: none;
+    border-radius: inherit;
+
+    @include flex-col-center;
+
+    &:hover {
+      background-color: $black;
+      color: $white;
+    }
+
+    &:active {
+      scale: 1.05;
+    }
+  }
+}
+
+.todo__empty {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: $gray-400;
+}
+
+.loader {
+  @include flex-col-center;
+
+  position: relative;
+  width: 70px;
+  aspect-ratio: 1;
+  border: 3px $gray-200 solid;
+  border-radius: 50%;
+  align-self: center;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    flex: 1;
+    border: 3px transparent solid;
+    border-top-color: $black;
+    border-top-width: 4px;
+    border-radius: 50%;
+    animation: spin .5s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

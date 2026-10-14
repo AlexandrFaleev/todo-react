@@ -1,0 +1,30 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+body {
+  @include flex-col-center;
+  justify-content: start;
+
+  padding: 100px 50px;
+
+  background-color: $gray-100;
+
+  font-family: 'FiraSans', sans-serif;
+  font-weight: normal;
+}
+
+h1 {
+  font-weight: bold;
+}
+
+button,
+input,
+label {
+  transition-duration: $transition-duration;
+}
+
+:focus-visible {
+  outline: 2px dashed $black;
+  outline-offset: 4px;
+  transition-duration: 0s !important;
+}
