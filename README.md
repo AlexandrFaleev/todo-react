@@ -17,5 +17,5 @@
 npm install
 
 #Запуск api и dev-режима проекта
-npm run server
+npm run start
 ```
