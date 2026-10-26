@@ -5,11 +5,7 @@ import { TodoContext } from '@/entitites/Todo/index.js'
 
 export const SearchTaskForm = (props) => {
     const {className} = props
-    const { search, setSearch } = useContext(TodoContext)
-
-    const onSearch = ({target}) => {
-        setSearch(target.value)
-    }
+    const { searchQuery, setSearchQuery } = useContext(TodoContext)
 
     return (
         <form className={className} onSubmit={(e) => e.preventDefault()}>
@@ -17,8 +13,8 @@ export const SearchTaskForm = (props) => {
                 id='searchTask'
                 title={'Поиск задачи'}
                 type='search'
-                value={search}
-                onInput={onSearch}
+                value={searchQuery}
+                onInput={(evt) => setSearchQuery(evt.target.value)}
             />
         </form>
     )
